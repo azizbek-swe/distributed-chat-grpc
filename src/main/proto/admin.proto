@@ -1,0 +1,13 @@
+syntax="proto3";
+package de.mcc;
+option java_package="de.mcc";
+option java_multiple_files=true;
+import "chat.proto";
+
+message DeleteRequest{
+  int32 id=1;
+}
+
+service AdminService{
+  rpc DeleteMessage(DeleteRequest) returns(Ack);
+}

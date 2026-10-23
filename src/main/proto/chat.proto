@@ -1,0 +1,27 @@
+syntax="proto3";
+package de.mcc;
+option java_package="de.mcc";
+option java_multiple_files=true;
+
+message ChatMessage{
+  int32 id=1;
+  string author=2;
+  string text=3;
+}
+message SendRequest{
+  string author=1;
+  string text=2;
+}
+message MessageList{
+  repeated ChatMessage messages=1;
+}
+message Empty{
+
+}
+message Ack{
+  bool ok=1;
+}
+service ChatService{
+  rpc SendMessage(SendRequest) returns(Ack);
+  rpc GetMessage(Empty) returns(MessageList);
+}
